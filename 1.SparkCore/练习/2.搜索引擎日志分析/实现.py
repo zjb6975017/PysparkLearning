@@ -27,7 +27,8 @@ if __name__ == '__main__':
     content_cut_rdd = content_rdd.flatMap(lambda x:jieba.cut_for_search(x))
     # 进行分组聚合排序，取出前五名
     result_rdd = content_cut_rdd.map(lambda x:(x,1)).reduceByKey(lambda a,b:a+b).\
-        sortBy(lambda x:x[1],ascending=False,numPartitions=1).take(5)
+        sortBy(lambda x:x[1],ascending=False,numPartitions=1).\
+        take(5)
 
     print(result_rdd)
     split_rdd.unpersist()
