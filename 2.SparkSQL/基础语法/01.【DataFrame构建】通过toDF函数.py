@@ -15,7 +15,7 @@ if __name__ == '__main__':
     # 读取学生分数表
     df = spark.read.csv("测试数据/stu_score.txt",sep = ',',header=False)
 
-    # 转换成dataframe
+    # 通过toDF函数转换成dataframe
     df2 = df.toDF("id","name","score")
 
     # 打印表结构，打印结果如下：
@@ -25,11 +25,11 @@ if __name__ == '__main__':
     # | -- score: string(nullable=true)
     df2.printSchema()
 
-    # 打印表数据如下
+    # 打印表数据如下,这里show的参数第一个是展示多少条数据，第二个参数是是否超过20个字符是否截断
     # +---+----+-----+
     # | id | name | score |
     # +---+----+-----+
     # | 1 | 语文 | 99 |
     # | 2 | 语文 | 99 |
     # | 3 | 语文 | 99 |
-    df2.show()
+    df2.show(3,False)
