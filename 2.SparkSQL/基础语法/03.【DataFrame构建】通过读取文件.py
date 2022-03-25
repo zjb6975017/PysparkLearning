@@ -31,6 +31,6 @@ if __name__ == '__main__':
         schema("name STRING,age INT,job STRING").\
         load("测试数据/people.json")
 
-    # 四、读取parquet读数据
+    # 四、读取parquet读数据，parquet内置schema(列名、列类型、是否为空)
     df = spark.read.format("parquet").\
         load("测试数据/users.parquet")
