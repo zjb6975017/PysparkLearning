@@ -21,7 +21,7 @@ if __name__ == '__main__':
 
     # 二、读取json文件数据源，一般不用写.schema，json自带，json带有列名和列类型
     df = spark.read.format("json").\
-        load("测试数据/people.txt")
+        load("测试数据/people.json")
 
     # 三、读取csv文件数据源
     df = spark.read.format("csv").\
@@ -29,7 +29,7 @@ if __name__ == '__main__':
         option("header",False).\
         option("enconding","uft-8").\
         schema("name STRING,age INT,job STRING").\
-        load("测试数据/people.json")
+        load("测试数据/people.csv")
 
     # 四、读取parquet读数据，parquet内置schema(列名、列类型、是否为空)
     df = spark.read.format("parquet").\
